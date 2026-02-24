@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security | Ожев М.С.</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0c0f;
+            color: #e0e4f0;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .header {
+            background: linear-gradient(145deg, #0b1a2a 0%, #05080f 100%);
+            border-bottom: 2px solid #1e3b5c;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: #2f8cff;
+            filter: drop-shadow(0 0 8px #2f8cff77);
+        }
+
+        .logo h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #d0e4ff, #8fcbff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav a {
+            color: #b8d0e5;
+            text-decoration: none;
+            margin-left: 32px;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav a:hover {
+            color: #2f8cff;
+            border-bottom-color: #2f8cff;
+        }
+
+        .hero {
+            background: radial-gradient(circle at 70% 30%, #102c42, #03070e);
+            padding: 80px 0;
+            border-bottom: 1px solid #1c3e5a;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #4da8ff, #9ac8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0c5dd;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .creator-card {
+            background: rgba(15, 35, 55, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #2f6b9c;
+            border-radius: 60px;
+            padding: 25px 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+            box-shadow: 0 0 30px #2f8cff33;
+        }
+
+        .creator-card i {
+            font-size: 3rem;
+            color: #2f8cff;
+        }
+
+        .creator-info {
+            text-align: left;
+        }
+
+        .creator-info h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .creator-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            color: #9fc5ff;
+        }
+
+        .card-panel {
+            background: #111c28;
+            border-radius: 40px;
+            padding: 40px;
+            border: 1px solid #1f405d;
+            box-shadow: 0 20px 40px -10px #00000080, 0 0 0 1px #2f8cff20 inset;
+            backdrop-filter: blur(4px);
+            margin-bottom: 50px;
+        }
+
+        .generator-area {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .password-display {
+            background: #0a131f;
+            border-radius: 60px;
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #2f5170;
+            box-shadow: 0 0 15px #1e3f60;
+        }
+
+        #generatedPassword {
+            font-family: 'Courier New', monospace;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            word-break: break-all;
+            color: #b8e2ff;
+        }
+
+        .copy-btn {
+            background: #1d3750;
+            border: none;
+            color: #b0dcff;
+            font-size: 1.5rem;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #3e6b92;
+        }
+
+        .copy-btn:hover {
+            background: #2f8cff;
+            color: #0a0c0f;
+        }
+
+        .settings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            background: #0e1a26;
+            padding: 25px 30px;
+            border-radius: 60px;
+        }
+
+        .slider-container {
+            flex: 3;
+            min-width: 200px;
+        }
+
+        .slider-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0c6dd;
+        }
+
+        input[type=range] {
+            width: 100%;
+            height: 8px;
+            background: #0f2538;
+            border-radius: 10px;
+            -webkit-appearance: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #2f8cff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 12px #2f8cff;
+        }
+
+        .complexity-badge {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .complexity-btn {
+            background: #102433;
+            border: 1px solid #244c6b;
+            color: #afcbee;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .complexity-btn.active {
+            background: #2f8cff;
+            border-color: #7fc2ff;
+            color: #000;
+            box-shadow: 0 0 20px #2f8cff;
+        }
+
+        .complexity-btn:hover {
+            background: #1e4a70;
+        }
+
+        .generate-btn {
+            background: #2f8cff;
+            border: none;
+            color: #010101;
+            font-weight: 700;
+            padding: 16px 42px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 20px #2f8cffaa;
+            letter-spacing: 0.5px;
+        }
+
+        .generate-btn:hover {
+            background: #5aa9ff;
+            transform: scale(1.02);
+        }
+
+        .checker-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        #passwordToCheck {
+            flex: 3;
+            background: #0a131f;
+            border: 1px solid #2a4e6e;
+            padding: 18px 28px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            color: white;
+            font-family: monospace;
+        }
+
+        #checkBtn {
+            background: #1a3145;
+            border: 1px solid #3a6b92;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        #checkBtn:hover {
+            background: #2f4b6e;
+        }
+
+        .strength-meter {
+            margin: 10px 0 15px;
+            height: 18px;
+            background: #1a2635;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        #strengthFill {
+            height: 100%;
+            width: 0%;
+            transition: 0.3s;
+        }
+
+        .verdict {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        #crackTime {
+            color: #8fcbff;
+        }
+
+        .rules-section {
+            background: #0d1a24;
+            border-radius: 40px;
+            padding: 50px;
+            border: 1px solid #1f4a6b;
+            margin: 60px 0;
+        }
+
+        .rules-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .rule-item {
+            background: #0f1f30;
+            padding: 28px;
+            border-radius: 28px;
+            border-left: 6px solid #2f8cff;
+        }
+
+        .rule-item i {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #2f8cff;
+        }
+
+        .rule-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .rule-item p {
+            color: #adc5df;
+        }
+
+        .tabs-section {
+            margin: 60px 0 20px;
+        }
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: #132433;
+            border: 1px solid #264e6e;
+            color: #bdd6f0;
+            padding: 16px 36px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            background: #2f8cff;
+            border-color: #7fc2ff;
+            color: #000;
+            box-shadow: 0 0 20px #2f8cff;
+        }
+        .tab-btn:hover {
+            background: #1f4f77;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active-content {
+            display: block;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .game-card {
+            background: #0e1c2b;
+            border-radius: 36px;
+            padding: 30px 25px;
+            border: 1px solid #244f72;
+            box-shadow: 0 15px 30px -12px #000;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .game-card:hover {
+            border-color: #2f8cff;
+            transform: translateY(-6px);
+        }
+        .game-icon {
+            font-size: 3rem;
+            color: #2f8cff;
+            margin-bottom: 20px;
+        }
+        .game-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .game-card p {
+            color: #b0c9e5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .game-btn {
+            background: #1a3349;
+            border: 1px solid #2f6b9c;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.2s;
+            width: 100%;
+        }
+        .game-btn:hover {
+            background: #2f8cff;
+            border-color: #7fc2ff;
+            color: #000;
+        }
+        .game-console {
+            background: #0c1924;
+            border-radius: 28px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #23587b;
+            font-size: 1rem;
+        }
+        .feedback-msg {
+            margin-top: 15px;
+            font-weight: 600;
+            min-height: 2em;
+        }
+        .quiz-option {
+            background: #112b3e;
+            padding: 12px 18px;
+            margin: 8px 0;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 1px solid #2d5f86;
+        }
+        .quiz-option:hover {
+            background: #1b4460;
+        }
+        .quiz-option.correct {
+            background: #0f6b4a;
+            border-color: #00cc88;
+        }
+        .quiz-option.wrong {
+            background: #8a2f2f;
+            border-color: #ff5e5e;
+        }
+        .hidden {
+            display: none;
+        }
+
+        .score-container {
+            background: #0c1a28;
+            border-radius: 40px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #2f6b9c;
+        }
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            margin: 20px auto;
+            background: conic-gradient(#2f8cff 0deg, #2f8cff 0deg, #1e3f60 0deg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            border: 4px solid #2f8cff;
+            transition: background 0.3s;
+        }
+        .checklist {
+            text-align: left;
+            max-width: 500px;
+            margin: 30px auto 0;
+        }
+        .checklist-item {
+            background: #112433;
+            margin: 15px 0;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #2b5880;
+        }
+        .checklist-item input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            accent-color: #2f8cff;
+            transform: scale(1.2);
+            margin-right: 10px;
+        }
+        .checklist-item label {
+            font-size: 1.1rem;
+            color: #d0e5ff;
+        }
+        .update-score-btn {
+            background: #2f8cff;
+            border: none;
+            color: #000;
+            font-weight: 700;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .footer {
+            background: #03080f;
+            border-top: 1px solid #1b3950;
+            padding: 40px 0;
+            text-align: center;
+            color: #5d799b;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-hal"></i>
+                <h1>CYBER SECURITY</h1>
+            </div>
+            <div class="nav">
+                <a href="#" data-tab="tab0">Главная</a>
+                <a href="#" data-tab="tab1">Генератор</a>
+                <a href="#" data-tab="tab2">Проверка</a>
+                <a href="#" data-tab="tab3">Игры</a>
+                <a href="#" data-tab="tab4">Оценка безопасности</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="tools">
+        <div class="container">
+            <div class="tabs-section">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="tab0">🏠 Главная</button>
+                    <button class="tab-btn" data-tab="tab1">🔐 Генератор</button>
+                    <button class="tab-btn" data-tab="tab2">🛡️ Проверка</button>
+                    <button class="tab-btn" data-tab="tab3">🎮 Игры</button>
+                    <button class="tab-btn" data-tab="tab4">📊 Оценка безопасности</button>
+                </div>
+
+                <!-- Главная -->
+                <div id="tab0" class="tab-content active-content">
+                    <div class="hero" style="border-bottom: none; padding: 40px 0;">
+                        <div class="hero-content">
+                            <h2>Добро пожаловать в <span class="hero-gradient">Cyber Security</span></h2>
+                            <p>Генерация сложных паролей, проверка их стойкости, обучение защите от фишинга и оценка вашей цифровой безопасности.</p>
+                            
+                            <div class="creator-card">
+                                <i class="fas fa-user-astronaut"></i>
+                                <div class="creator-info">
+                                    <h3>Ожев М.С.</h3>
+                                    <p>Создатель и разработчик<br>Cyber Security 2026</p>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 50px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                                <div style="background: #0f1e30; border-radius: 30px; padding: 20px 30px; border-left: 4px solid #2f8cff;">
+                                    <i class="fas fa-key" style="color: #2f8cff; font-size: 2rem; margin-right: 15px;"></i>
+                                    <span style="font-size: 1.2rem;">Генератор паролей</span>
+                                </div>
+                                <div style="background: #0f1e30; border-radius: 30px; padding: 20px 30px; border-left: 4px solid #2f8cff;">
+                                    <i class="fas fa-shield" style="color: #2f8cff; font-size: 2rem; margin-right: 15px;"></i>
+                                    <span style="font-size: 1.2rem;">Проверка на прочность</span>
+                                </div>
+                                <div style="background: #0f1e30; border-radius: 30px; padding: 20px 30px; border-left: 4px solid #2f8cff;">
+                                    <i class="fas fa-gamepad" style="color: #2f8cff; font-size: 2rem; margin-right: 15px;"></i>
+                                    <span style="font-size: 1.2rem;">4 игры по безопасности</span>
+                                </div>
+                                <div style="background: #0f1e30; border-radius: 30px; padding: 20px 30px; border-left: 4px solid #2f8cff;">
+                                    <i class="fas fa-chart-line" style="color: #2f8cff; font-size: 2rem; margin-right: 15px;"></i>
+                                    <span style="font-size: 1.2rem;">Оценка безопасности</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-section" style="margin-top: 20px;">
+                        <div class="rules-title">
+                            <i class="fas fa-shield-alt" style="font-size: 2.5rem;"></i>
+                            <span>Памятка: что не стоит делать</span>
+                        </div>
+                        <div class="rules-grid">
+                            <div class="rule-item"><i class="fas fa-redo-alt"></i><h4>Один пароль везде</h4><p>Компрометация одного сервиса открывает доступ ко всем.</p></div>
+                            <div class="rule-item"><i class="fas fa-calendar-alt"></i><h4>Личные данные</h4><p>Имя, дата рождения — первый перебор хакеров.</p></div>
+                            <div class="rule-item"><i class="fas fa-save"></i><h4>Хранение в браузере</h4><p>Используйте менеджеры паролей.</p></div>
+                            <div class="rule-item"><i class="fas fa-share-alt"></i><h4>Пересылка паролей</h4><p>Никогда не отправляйте пароли в открытом виде.</p></div>
+                            <div class="rule-item"><i class="fas fa-mobile-alt"></i><h4>Двухфакторка</h4><p>Остановит взлом, даже если пароль украден.</p></div>
+                            <div class="rule-item"><i class="fas fa-download"></i><h4>Фишинг</h4><p>Проверяйте адреса сайтов и отправителей.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Генератор -->
+                <div id="tab1" class="tab-content">
+                    <div class="card-panel">
+                        <div class="generator-area">
+                            <div class="password-display">
+                                <span id="generatedPassword">P@5sW0rd#2026</span>
+                                <button class="copy-btn" id="copyGenerated" title="Копировать"><i class="far fa-copy"></i></button>
+                            </div>
+                            <div class="settings">
+                                <div class="slider-container">
+                                    <label for="lengthSlider">Длина: <span id="lengthValue">12</span></label>
+                                    <input type="range" id="lengthSlider" min="4" max="32" value="12">
+                                </div>
+                                <div class="complexity-badge">
+                                    <span class="complexity-btn active" data-complexity="easy">Лёгкий</span>
+                                    <span class="complexity-btn" data-complexity="medium">Средний</span>
+                                    <span class="complexity-btn" data-complexity="hard">Сложный</span>
+                                    <span class="complexity-btn" data-complexity="paranoid">Paranoid</span>
+                                </div>
+                                <button class="generate-btn" id="generateBtn"><i class="fas fa-rotate"></i> Сгенерировать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проверка пароля -->
+                <div id="tab2" class="tab-content">
+                    <div class="card-panel">
+                        <div class="checker-grid">
+                            <div class="input-group">
+                                <input type="text" id="passwordToCheck" placeholder="Введите пароль для проверки..." value="qwerty123">
+                                <button id="checkBtn">Проверить</button>
+                            </div>
+                            <div class="strength-meter">
+                                <div id="strengthFill" style="width: 20%; background: #f44336;"></div>
+                            </div>
+                            <div class="verdict">
+                                Сложность: <span id="strengthLabel">Очень слабый</span> <br>
+                                Время взлома (перебор): <span id="crackTime">менее секунды</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Игры (4 игры) -->
+                <div id="tab3" class="tab-content">
+                    <div class="games-grid">
+                        <!-- Игра 1: Найди фишинг -->
+                        <div class="game-card">
+                            <div class="game-icon"><i class="fas fa-fish"></i></div>
+                            <h3>Найди фишинг</h3>
+                            <p>Какой из этих сайтов — мошеннический?</p>
+                            <button class="game-btn" id="startGame1">▶ Играть</button>
+                            <div id="game1Console" class="game-console hidden">
+                                <div id="game1Question"></div>
+                                <div id="game1Options"></div>
+                                <div id="game1Feedback" class="feedback-msg"></div>
+                            </div>
+                        </div>
+
+                        <!-- Игра 2: Безопасная ссылка? -->
+                        <div class="game-card">
+                            <div class="game-icon"><i class="fas fa-link"></i></div>
+                            <h3>Безопасная ссылка?</h3>
+                            <p>Тебе пришло письмо. Стоит ли переходить по ссылке?</p>
+                            <button class="game-btn" id="startGame2">▶ Играть</button>
+                            <div id="game2Console" class="game-console hidden">
+                                <div id="game2Desc" style="margin-bottom:12px;"></div>
+                                <div id="game2Options"></div>
+                                <div id="game2Feedback" class="feedback-msg"></div>
+                            </div>
+                        </div>
+
+                        <!-- Игра 3: Перехватчик -->
+                        <div class="game-card">
+                            <div class="game-icon"><i class="fas fa-envelope-open-text"></i></div>
+                            <h3>Перехватчик</h3>
+                            <p>Какое из писем пытается украсть твои данные?</p>
+                            <button class="game-btn" id="startGame3">▶ Играть</button>
+                            <div id="game3Console" class="game-console hidden">
+                                <div id="game3Question"></div>
+                                <div id="game3Options"></div>
+                                <div id="game3Feedback" class="feedback-msg"></div>
+                            </div>
+                        </div>
+
+                        <!-- Игра 4: Кибер-детектив -->
+                        <div class="game-card">
+                            <div class="game-icon"><i class="fas fa-magnifying-glass"></i></div>
+                            <h3>Кибер-детектив</h3>
+                            <p>Расследуйте подозрительные ситуации и находите угрозы.</p>
+                            <button class="game-btn" id="startGame4">▶ Играть</button>
+                            <div id="game4Console" class="game-console hidden">
+                                <div id="game4Question"></div>
+                                <div id="game4Options"></div>
+                                <div id="game4Feedback" class="feedback-msg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Оценка безопасности (опросник) -->
+                <div id="tab4" class="tab-content">
+                    <div class="card-panel">
+                        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Оценка безопасности</h2>
+                        <p style="text-align: center; color: #aac9ff; margin-bottom: 30px;">Ответьте на вопросы и узнайте ваш уровень цифровой гигиены</p>
+                        
+                        <div class="score-container">
+                            <div class="score-circle" id="scoreCircle">0%</div>
+                            
+                            <div class="checklist">
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="check1">
+                                    <label for="check1">Использую двухфакторную аутентификацию</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="check2">
+                                    <label for="check2">У меня разные пароли для разных сервисов</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="check3">
+                                    <label for="check3">Я не перехожу по подозрительным ссылкам</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="check4">
+                                    <label for="check4">Я использую менеджер паролей</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="check5">
+                                    <label for="check5">Я регулярно обновляю ПО</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="check6">
+                                    <label for="check6">Я проверяю отправителя подозрительных писем</label>
+                                </div>
+                            </div>
+
+                            <button class="update-score-btn" id="updateScore">Обновить оценку</button>
+                            <p id="scoreComment" style="margin-top: 25px; font-size: 1.2rem; color: #8fcbff;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p><i class="fas fa-lock"></i> Cyber Security 2026 — создатель Ожев М.С. | 4 игры + Оценка безопасности</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Вкладки
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabs = document.querySelectorAll('.tab-content');
+            const navLinks = document.querySelectorAll('.nav a');
+
+            function switchTab(tabId) {
+                tabs.forEach(t => t.classList.remove('active-content'));
+                tabBtns.forEach(b => b.classList.remove('active'));
+                const activeTab = document.getElementById(tabId);
+                if (activeTab) activeTab.classList.add('active-content');
+                const activeBtn = Array.from(tabBtns).find(btn => btn.dataset.tab === tabId);
+                if (activeBtn) activeBtn.classList.add('active');
+            }
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchTab(btn.dataset.tab);
+                });
+            });
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = link.dataset.tab;
+                    if (tabId) switchTab(tabId);
+                });
+            });
+
+            // Генератор паролей
+            const lengthSlider = document.getElementById('lengthSlider');
+            const lengthSpan = document.getElementById('lengthValue');
+            const generatedSpan = document.getElementById('generatedPassword');
+            const generateBtn = document.getElementById('generateBtn');
+            const complexityBtns = document.querySelectorAll('.complexity-btn');
+            const copyBtn = document.getElementById('copyGenerated');
+            let currentComplexity = 'easy';
+            lengthSlider.addEventListener('input', () => { lengthSpan.textContent = lengthSlider.value; });
+            complexityBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    complexityBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentComplexity = btn.dataset.complexity;
+                });
+            });
+            const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+            const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const digits = '0123456789';
+            const symbols = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
+            function generatePassword(length, complexity) {
+                let pool = '';
+                if (complexity === 'easy') pool = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789';
+                else if (complexity === 'medium') pool = lowercase + uppercase + digits;
+                else if (complexity === 'hard') pool = lowercase + uppercase + digits + symbols;
+                else pool = lowercase + uppercase + digits + symbols + '{}[]|\\~`<>?,./';
+                let pwd = '';
+                for (let i = 0; i < length; i++) pwd += pool[Math.floor(Math.random() * pool.length)];
+                return pwd;
+            }
+
+            // Проверка пароля
+            const passwordInput = document.getElementById('passwordToCheck');
+            const checkBtn = document.getElementById('checkBtn');
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthLabel = document.getElementById('strengthLabel');
+            const crackTimeSpan = document.getElementById('crackTime');
+            function checkPasswordStrength(pwd) {
+                let score = 0;
+                if (!pwd) return { score:0, strength:'Очень слабый', time:'менее секунды', color:'#f44336' };
+                if (pwd.length >= 8) score++; if (pwd.length >=12) score++; if (pwd.length >=16) score++;
+                if (/[a-z]/.test(pwd)) score++; if (/[A-Z]/.test(pwd)) score++; if (/[0-9]/.test(pwd)) score++;
+                if (/[^a-zA-Z0-9]/.test(pwd)) score+=2;
+                const common = ['password','qwerty','123456','admin','letmein','welcome'];
+                if (common.some(w => pwd.toLowerCase().includes(w))) score = Math.max(0, score-3);
+                let strength = 'Очень слабый', color = '#f44336', time = 'мгновенно';
+                if (score >= 9) { strength='Идеальный'; color='#00c853'; time='сотни лет'; }
+                else if (score >=7) { strength='Хороший'; color='#64dd17'; time='несколько лет'; }
+                else if (score >=5) { strength='Средний'; color='#ffb300'; time='несколько месяцев'; }
+                else if (score >=3) { strength='Слабый'; color='#ff6b00'; time='несколько дней'; }
+                return { score, strength, color, time };
+            }
+            function updateCheck() {
+                const pwd = passwordInput.value;
+                const res = checkPasswordStrength(pwd);
+                strengthFill.style.width = Math.min(100, (res.score/11)*100)+'%';
+                strengthFill.style.background = res.color;
+                strengthLabel.textContent = res.strength;
+                crackTimeSpan.textContent = res.time;
+            }
+
+            // СВЯЗЬ ГЕНЕРАТОРА И ПРОВЕРКИ
+            generateBtn.addEventListener('click', () => {
+                const newPassword = generatePassword(parseInt(lengthSlider.value), currentComplexity);
+                generatedSpan.textContent = newPassword;
+                passwordInput.value = newPassword;
+                updateCheck();
+            });
+
+            copyBtn.addEventListener('click', () => { 
+                navigator.clipboard.writeText(generatedSpan.textContent).then(() => alert('Пароль скопирован!')); 
+            });
+
+            (function init() {
+                const initialPwd = generatePassword(parseInt(lengthSlider.value), currentComplexity);
+                generatedSpan.textContent = initialPwd;
+                passwordInput.value = initialPwd;
+                updateCheck();
+            })();
+
+            checkBtn.addEventListener('click', updateCheck);
+            passwordInput.addEventListener('input', updateCheck);
+
+            // ========== ИГРЫ ==========
+            // Утилита для перемешивания массива (алгоритм Фишера-Йетса)
+            function shuffleArray(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+
+            // --- Игра 1: Найди фишинг (30+ вопросов) ---
+            const game1Btn = document.getElementById('startGame1');
+            const game1Console = document.getElementById('game1Console');
+            const game1Question = document.getElementById('game1Question');
+            const game1Options = document.getElementById('game1Options');
+            const game1Feedback = document.getElementById('game1Feedback');
+
+            // Мастер-список для игры 1
+            const phishingMaster = [
+                { question: 'Какой сайт безопасен для ввода пароля?', options: ['https://google.com', 'http://googIe.com (с заглавной I)', 'https://g00gle.com'], correct: 0 },
+                { question: 'Настоящий сайт Сбербанка?', options: ['https://sberbank.loginu.net', 'https://online.sberbank.ru', 'https://sberbank-online.ru'], correct: 1 },
+                { question: 'Какая ссылка ведёт на официальный Steam?', options: ['https://steam-community.ru', 'https://steam.com.ru', 'https://steamcommunity.com'], correct: 2 },
+                { question: 'Где безопасно вводить данные карты?', options: ['https://www.paypal.com', 'http://paypal.security.ru', 'https://paypa1.com'], correct: 0 },
+                { question: 'Какой домен настоящий для ВКонтакте?', options: ['vk.com', 'vkontaktee.ru', 'vk.secureauth.net'], correct: 0 },
+                { question: 'Фишинговый сайт Apple?', options: ['https://appleid.apple.com', 'http://apple.com.verify.now', 'https://icloud.com'], correct: 1 },
+                { question: 'Официальный сайт Microsoft?', options: ['https://microsoftonline.com', 'https://login.microsoftonline.com', 'https://microsoft-account.net'], correct: 1 },
+                { question: 'Где НЕ стоит вводить пароль от почты?', options: ['https://gmail.com', 'https://gmail.google.com', 'http://gmail.login-helper.ru'], correct: 2 },
+                { question: 'Какой URL принадлежит РЖД?', options: ['https://pass.rzd.ru', 'https://rzd-pass.ru', 'https://rzd.tickets'], correct: 0 },
+                { question: 'Подозрительный сайт?', options: ['https://github.com', 'http://github.com.secure', 'https://gitlab.com'], correct: 1 },
+                { question: 'Какой сайт мошеннический?', options: ['https://amazon.com', 'https://amazon-shop.ru', 'https://amazon.de'], correct: 1 },
+                { question: 'Официальный сайт Netflix?', options: ['https://netflix.com', 'https://netflix-account.com', 'https://netflix.tv'], correct: 0 },
+                { question: 'Безопасный URL Instagram', options: ['https://instagram.com', 'https://instagr.am-login.ru', 'https://instagram.com/login'], correct: 0 },
+                { question: 'Фишинг под Яндекс', options: ['https://yandex.ru', 'https://yandex.security.ru', 'https://yandex.com'], correct: 1 },
+                { question: 'Настоящий сайт WhatsApp?', options: ['https://whatsapp.com', 'https://whatsapp-web.ru', 'https://wa.me'], correct: 0 },
+                { question: 'Какой домен принадлежит Twitter (X)?', options: ['https://twitter.com', 'https://twittter.com', 'https://x.com'], correct: 0 },
+                { question: 'Сайт для входа в Telegram Web?', options: ['https://web.telegram.org', 'https://telegram-login.ru', 'https://t.me'], correct: 0 },
+                { question: 'Где безопасно вводить данные от госуслуг?', options: ['https://gosuslugi.ru', 'https://gosuslugi.online', 'https://gosuslugi.ru.security'], correct: 0 },
+                { question: 'Фишинговый сайт Альфа-Банка?', options: ['https://alfabank.ru', 'https://alfabank-online.ru', 'https://alfa.ru'], correct: 1 },
+                { question: 'Официальный сайт Ozon?', options: ['https://ozon.ru', 'https://ozon.com.ru', 'https://ozon.ru.security'], correct: 0 },
+                { question: 'Настоящий сайт Wildberries?', options: ['https://wildberries.ru', 'https://wildberries-shop.ru', 'https://wb.ru'], correct: 0 },
+                { question: 'Какой сайт НЕ принадлежит Google?', options: ['https://google.com', 'https://g00gle.com', 'https://youtube.com'], correct: 1 },
+                { question: 'Фишинг под LinkedIn', options: ['https://linkedin.com', 'https://linkedin-login.net', 'https://linkedin.ru'], correct: 1 },
+                { question: 'Безопасный сайт Spotify', options: ['https://spotify.com', 'https://spotify-login.ru', 'https://spotify.ru'], correct: 0 },
+                { question: 'Какой адрес у настоящего GitHub?', options: ['https://github.com', 'https://github-login.com', 'https://github.ru'], correct: 0 },
+                { question: 'Где нельзя вводить пароль от Apple ID?', options: ['https://appleid.apple.com', 'https://apple.com.verify-account.ru', 'https://icloud.com'], correct: 1 },
+                { question: 'Официальный сайт PayPal', options: ['https://paypal.com', 'https://paypal-verification.ru', 'https://paypal.com.ru'], correct: 0 },
+                { question: 'Фишинговый сайт Twitch', options: ['https://twitch.tv', 'https://twitch.tv.login', 'https://twitch.com'], correct: 1 },
+                { question: 'Безопасный домен Microsoft', options: ['https://microsoft.com', 'https://microsoft-account.ru', 'https://login.microsoftonline.com'], correct: 0 },
+                { question: 'Какой сайт пытается украсть данные карты?', options: ['https://sberbank.ru', 'http://sberbank-online.ru', 'https://alfabank.ru'], correct: 1 }
+            ];
+            // Перемешанная копия для игры
+            let game1Pool = shuffleArray([...phishingMaster]);
+            let game1Index = 0;
+
+            function loadGame1() {
+                const d = game1Pool[game1Index % game1Pool.length];
+                game1Question.innerText = d.question;
+                game1Options.innerHTML = '';
+                d.options.forEach((opt, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'quiz-option';
+                    div.innerText = opt;
+                    div.dataset.optIndex = idx;
+                    div.addEventListener('click', (e) => {
+                        const selected = parseInt(e.currentTarget.dataset.optIndex);
+                        const isCorrect = (selected === d.correct);
+                        Array.from(game1Options.children).forEach((ch, i) => {
+                            if (i === d.correct) ch.classList.add('correct');
+                            else if (i === selected && !isCorrect) ch.classList.add('wrong');
+                        });
+                        game1Feedback.innerText = isCorrect ? '✅ Верно! Это безопасный сайт.' : '❌ Ошибка! Это фишинг.';
+                        setTimeout(() => {
+                            game1Index++;
+                            // Когда дошли до конца, перемешиваем заново
+                            if (game1Index >= game1Pool.length) {
+                                game1Pool = shuffleArray([...phishingMaster]);
+                                game1Index = 0;
+                            }
+                            loadGame1();
+                            game1Feedback.innerText = '';
+                        }, 1200);
+                    });
+                    game1Options.appendChild(div);
+                });
+            }
+            game1Btn.addEventListener('click', () => {
+                game1Console.classList.remove('hidden');
+                game1Pool = shuffleArray([...phishingMaster]);
+                game1Index = 0;
+                loadGame1();
+            });
+
+            // --- Игра 2: Безопасная ссылка? (30+ сценариев) ---
+            const game2Btn = document.getElementById('startGame2');
+            const game2Console = document.getElementById('game2Console');
+            const game2Desc = document.getElementById('game2Desc');
+            const game2Options = document.getElementById('game2Options');
+            const game2Feedback = document.getElementById('game2Feedback');
+
+            const emailMaster = [
+                { text: 'Письмо от "службы безопасности" Госуслуг: "Ваш аккаунт заблокирован, перейдите по ссылке https://gosuslugi.vhod.ru"', safe: false },
+                { text: 'Письмо от друга: "Привет, смотри фото) https://clck.ru/abc123"', safe: false },
+                { text: 'Письмо от коллеги с корпоративного домена: "Обновите пароль в системе: https://company.okta.com"', safe: true },
+                { text: 'Уведомление от Apple: "Ваш Apple ID используется в новом устройстве, подтвердите: https://apple.com/verify"', safe: true },
+                { text: 'СМС от "банка": "Ваша карта заблокирована, разблокировка по ссылке: http://sberbank.xyz"', safe: false },
+                { text: 'Письмо от HR: "Положение о премии во вложении, откройте" (ссылка на документ)', safe: false },
+                { text: 'Оповещение от LinkedIn: "Кто-то заходил в аккаунт, проверьте активность: https://linkedin.com/security"', safe: true },
+                { text: 'Аккаунт Steam: "Подарок! Заберите: https://steamcommunity.com/gifts" (ссылка ведёт на стим)', safe: true },
+                { text: 'Налоговая: "У вас задолженность, оплатите сейчас со скидкой: http://nalog.gov.pay"', safe: false },
+                { text: 'Письмо от директора: "Срочно переведите деньги по реквизитам в письме" (ссылка на фейковый сайт)', safe: false },
+                { text: 'Служба доставки: "Ваша посылка ожидает, подтвердите данные: https://delivery.ru"', safe: false },
+                { text: 'Письмо от Google: "Подозрительная активность, проверьте аккаунт: https://accounts.google.com"', safe: true },
+                { text: 'Telegram: "Вам подарок! Перейдите по ссылке: https://t.me/prize"', safe: false },
+                { text: 'Уведомление от Instagram: "Ваш пароль устарел, смените: https://instagram.com"', safe: true },
+                { text: 'Письмо от Microsoft: "Ваша подписка истекает, продлите: https://microsoft.com/renew"', safe: true },
+                { text: 'СМС от "Почты России": "Заберите посылку, оплатите пошлину: http://pochta.ru.pay"', safe: false },
+                { text: 'Оповещение от Facebook: "Новый вход в аккаунт, это вы? https://facebook.com"', safe: true },
+                { text: 'Письмо от Netflix: "Не удалось списать платёж, обновите данные: https://netflix.com"', safe: true },
+                { text: 'СМС: "Ваш номер выиграл приз, получите: http://prize.win"', safe: false },
+                { text: 'Письмо от Amazon: "Возврат средств, подтвердите: https://amazon.com/refund"', safe: true },
+                { text: 'Ссылка от "одноклассника" в вотсапе: "смотри видео) http://video.ru"', safe: false },
+                { text: 'Уведомление от GitHub: "Security alert, проверьте: https://github.com/settings"', safe: true },
+                { text: 'Письмо от Ростелекома: "Ваш договор расторгнут, оплатите: http://rostelecom.ru"', safe: false },
+                { text: 'СМС от "мамы": "Перейди по ссылке, тут фото щенка"', safe: false },
+                { text: 'Оповещение от Avito: "Ваше объявление снято, подтвердите: https://avito.ru"', safe: true },
+                { text: 'Письмо от Юлы: "Кто-то оставил отзыв, посмотрите: https://youla.ru"', safe: true },
+                { text: 'СМС от "Сбербанка": "Начислен кэшбэк, перейдите: http://sberbank.online"', safe: false },
+                { text: 'Уведомление от Apple Pay: "Карта добавлена на новый iPhone, если не вы — отмените: https://apple.com"', safe: true },
+                { text: 'Письмо от Zoom: "Приглашение на конференцию: https://zoom.us/j/123"', safe: true },
+                { text: 'Ссылка от "подруги" в ВК: "голосуй за моего кота) https://vk.com/vote"', safe: false }
+            ];
+            let game2Pool = shuffleArray([...emailMaster]);
+            let game2Index = 0;
+
+            function loadGame2() {
+                const sc = game2Pool[game2Index % game2Pool.length];
+                game2Desc.innerText = sc.text;
+                game2Options.innerHTML = '';
+                ['Перейти', 'Не переходить'].forEach((txt, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'quiz-option';
+                    div.innerText = txt;
+                    div.addEventListener('click', () => {
+                        const correctAction = sc.safe ? 0 : 1;
+                        const userChoice = idx;
+                        const isCorrect = (userChoice === correctAction);
+                        game2Feedback.innerText = isCorrect ? '✅ Правильно!' : '❌ Неверно! Опасно.';
+                        if (correctAction === 0) Array.from(game2Options.children)[0].classList.add('correct');
+                        else Array.from(game2Options.children)[1].classList.add('correct');
+                        if (!isCorrect) div.classList.add('wrong');
+                        setTimeout(() => {
+                            game2Index++;
+                            if (game2Index >= game2Pool.length) {
+                                game2Pool = shuffleArray([...emailMaster]);
+                                game2Index = 0;
+                            }
+                            loadGame2();
+                            game2Feedback.innerText = '';
+                        }, 1200);
+                    });
+                    game2Options.appendChild(div);
+                });
+            }
+            game2Btn.addEventListener('click', () => {
+                game2Console.classList.remove('hidden');
+                game2Pool = shuffleArray([...emailMaster]);
+                game2Index = 0;
+                loadGame2();
+            });
+
+            // --- Игра 3: Перехватчик (30+ триад) ---
+            const game3Btn = document.getElementById('startGame3');
+            const game3Console = document.getElementById('game3Console');
+            const game3Question = document.getElementById('game3Question');
+            const game3Options = document.getElementById('game3Options');
+            const game3Feedback = document.getElementById('game3Feedback');
+
+            const triadMaster = [
+                { question: 'Какое письмо хочет украсть пароль?', options: ['Счёт за свет (скидка 30%)', 'Ваш Apple ID заблокирован, войдите', 'Встреча в пятницу'], correct: 1 },
+                { question: 'Какое письмо — фишинг?', options: ['Новости IT', 'Посылка ожидает, подтвердите данные', 'Рассылка рецептов'], correct: 1 },
+                { question: 'Выбери фишинговое письмо', options: ['Изменения в графике работы', 'Вы выиграли айфон, заполните форму', 'Отчёт за квартал'], correct: 1 },
+                { question: 'Где пытаются украсть данные?', options: ['Просьба проголосовать за котика', 'Ссылка на фейковый вход в Google', 'Приглашение на вебинар'], correct: 1 },
+                { question: 'Что скорее всего фишинг?', options: ['Обновление подписки Netflix (ссылка на фишинг)', 'Рассылка скидок от известного магазина', 'Поздравление с праздником'], correct: 0 },
+                { question: 'Подозрительное письмо:', options: ['Квитанция об оплате (PDF)', 'Требование сменить пароль (ссылка на подделку)', 'Приглашение в календарь'], correct: 1 },
+                { question: 'Какое письмо опасно?', options: ['Ваш аккаунт взломан, перейдите для восстановления', 'Реклама курсов', 'Новости компании'], correct: 0 },
+                { question: 'Фишинг?', options: ['Документы от бухгалтера', 'Служба доставки: укажите адрес ещё раз', 'Чат с коллегой'], correct: 1 },
+                { question: 'Где кража данных?', options: ['Опрос удовлетворённости', 'Подарочная карта Amazon (ссылка на подделку)', 'Изменение в политике конфиденциальности'], correct: 1 },
+                { question: 'Какое письмо мошенническое?', options: ['Списание средств, отмена: войдите в банк', 'Внутренняя рассылка', 'Фото с корпоратива'], correct: 0 },
+                { question: 'Выберите фишинговое сообщение', options: ['Уведомление о задолженности от налоговой', 'Приглашение на хакатон', 'СМС: "Поздравляем, вы выиграли айфон"'], correct: 2 },
+                { question: 'Какое письмо пытается украсть данные карты?', options: ['Чек об оплате', 'Ваш платёж не прошёл, обновите карту', 'Реклама доставки суши'], correct: 1 },
+                { question: 'Что из этого фишинг?', options: ['Письмо от друга с мемами', 'Ссылка на "розыгрыш призов" от банка', 'Уведомление о дне рождения коллеги'], correct: 1 },
+                { question: 'Какое сообщение опасное?', options: ['Код подтверждения от Google', 'СМС от "доставки" с просьбой перейти по ссылке', 'Напоминание о встрече'], correct: 1 },
+                { question: 'Где вероятнее всего фишинг?', options: ['Письмо с вложением от неизвестного отправителя', 'Пост в соцсети от друга', 'Уведомление от YouTube'], correct: 0 },
+                { question: 'Что является фишингом?', options: ['Письмо от HR с документами', 'Ссылка на "фото" в личном сообщении от незнакомца', 'Новостная рассылка'], correct: 1 },
+                { question: 'Выберите мошенническое письмо', options: ['Письмо от директора с поручением', 'Письмо от "техподдержки" с требованием пароля', 'Письмо от коллеги с отчётом'], correct: 1 },
+                { question: 'Какое письмо НЕ является фишингом?', options: ['Ссылка на "бесплатный VPN"', 'Письмо от знакомого с вопросом', 'СМС от "банка" с ссылкой на обновление'], correct: 1 },
+                { question: 'Что скорее всего безопасно?', options: ['Ссылка от друга на смешное видео', 'Письмо от сервиса, на который вы подписаны', 'Всплывающее окно "Ваш компьютер заражен"'], correct: 1 },
+                { question: 'Какой из вариантов фишинг?', options: ['Рассылка скидок от магазина, где вы ничего не покупали', 'Ежемесячный отчёт по проекту', 'Приглашение на конференцию'], correct: 0 },
+                { question: 'Выберите безопасное письмо', options: ['Письмо от "Apple" с просьбой подтвердить пароль', 'Письмо от друга с фотографией', 'Письмо от "банка" о блокировке карты'], correct: 1 },
+                { question: 'Что из этого мошенничество?', options: ['СМС от "службы безопасности" с кодом подтверждения', 'Уведомление о списании средств от реального банка', 'Напоминание о платеже за интернет'], correct: 0 },
+                { question: 'Какое сообщение пытается украсть аккаунт?', options: ['Ссылка на "восстановление доступа" от Steam', 'Ссылка на стрим любимого стримера', 'Ссылка на статью в Википедии'], correct: 0 },
+                { question: 'Что безопасно открывать?', options: ['Вложение .exe от коллеги', 'PDF-файл от бухгалтера', 'Ссылку от незнакомца в личку'], correct: 1 },
+                { question: 'Где пытаются украсть данные?', options: ['Форма входа на поддельном сайте', 'Форма подписки на новости', 'Форма обратной связи'], correct: 0 },
+                { question: 'Какое действие безопасно?', options: ['Ввести пароль на сайте, где написано "Ваш аккаунт будет заблокирован"', 'Ввести пароль на официальном сайте', 'Ввести пароль в Google-форме'], correct: 1 },
+                { question: 'Что из этого фишинг?', options: ['Письмо от друга с просьбой перевести деньги', 'Письмо от мамы с рецептом', 'Письмо от коллеги с документом'], correct: 0 },
+                { question: 'Выберите мошенническую ссылку', options: ['https://vk.com', 'http://vk.com.vhod.ru', 'https://ok.ru'], correct: 1 },
+                { question: 'Какая ссылка безопасна?', options: ['https://google.com', 'http://google.com.verify', 'https://go0gle.com'], correct: 0 },
+                { question: 'Что вероятнее всего фишинг?', options: ['Письмо от друга с поздравлением', 'Письмо от банка с просьбой перейти по ссылке и ввести код', 'Письмо от работодателя с приказом'], correct: 1 }
+            ];
+            let game3Pool = shuffleArray([...triadMaster]);
+            let game3Index = 0;
+
+            function loadGame3() {
+                const t = game3Pool[game3Index % game3Pool.length];
+                game3Question.innerText = t.question;
+                game3Options.innerHTML = '';
+                t.options.forEach((opt, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'quiz-option';
+                    div.innerText = opt;
+                    div.addEventListener('click', () => {
+                        const isCorrect = (idx === t.correct);
+                        Array.from(game3Options.children).forEach((ch, i) => {
+                            if (i === t.correct) ch.classList.add('correct');
+                            else if (i === idx && !isCorrect) ch.classList.add('wrong');
+                        });
+                        game3Feedback.innerText = isCorrect ? '✅ Верно, это фишинг!' : '❌ Нет, настоящее письмо безопасно.';
+                        setTimeout(() => {
+                            game3Index++;
+                            if (game3Index >= game3Pool.length) {
+                                game3Pool = shuffleArray([...triadMaster]);
+                                game3Index = 0;
+                            }
+                            loadGame3();
+                            game3Feedback.innerText = '';
+                        }, 1200);
+                    });
+                    game3Options.appendChild(div);
+                });
+            }
+            game3Btn.addEventListener('click', () => {
+                game3Console.classList.remove('hidden');
+                game3Pool = shuffleArray([...triadMaster]);
+                game3Index = 0;
+                loadGame3();
+            });
+
+            // --- Игра 4: Кибер-детектив (30+ вопросов) ---
+            const game4Btn = document.getElementById('startGame4');
+            const game4Console = document.getElementById('game4Console');
+            const game4Question = document.getElementById('game4Question');
+            const game4Options = document.getElementById('game4Options');
+            const game4Feedback = document.getElementById('game4Feedback');
+
+            const detectiveMaster = [
+                { question: 'Вы получили ссылку от "друга" в мессенджере. Что делать?', options: ['Сразу перейти по ссылке', 'Написать другу и уточнить, что за ссылка', 'Открыть ссылку и ввести пароль'], correct: 1 },
+                { question: 'Можно ли отправлять фото паспорта в мессенджер?', options: ['Да, если адресат свой', 'Лучше не рисковать, использовать защищённое хранилище', 'Можно, если поставить пароль на чат'], correct: 1 },
+                { question: 'К вам в Telegram пишет "техподдержка" и просит пароль. Ваши действия?', options: ['Отправить пароль', 'Игнорировать или заблокировать', 'Уточнить детали'], correct: 1 },
+                { question: 'Стоит ли открывать вложения от незнакомцев?', options: ['Да, интересно же', 'Ни в коем случае, могут быть вирусы', 'Открыть, но проверить антивирусом'], correct: 1 },
+                { question: 'Как защитить переписку?', options: ['Использовать секретные чаты с шифрованием', 'Удалять сообщения сразу', 'Ставить сложный пароль на телефон'], correct: 0 },
+                { question: 'Можно ли использовать один пароль для мессенджера и почты?', options: ['Да, для удобства', 'Нет, это опасно', 'Можно, если пароль сложный'], correct: 1 },
+                { question: 'Что такое двухфакторная аутентификация?', options: ['Вход по отпечатку пальца', 'Вход с подтверждением через SMS или приложение', 'Вход по номеру телефона'], correct: 1 },
+                { question: 'Какой пароль считается надёжным?', options: ['qwerty123', 'MyD0g!$F1d0', 'password'], correct: 1 },
+                { question: 'Что делать, если вам пришло письмо от банка с просьбой перейти по ссылке?', options: ['Перейти, это же банк', 'Проверить адрес отправителя и не переходить, если сомневаетесь', 'Отправить свои данные'], correct: 1 },
+                { question: 'Можно ли вводить данные карты на сайте без https?', options: ['Да, если сайт красивый', 'Нет, это небезопасно', 'Можно, если сумма маленькая'], correct: 1 },
+                { question: 'Что такое фишинг?', options: ['Вид рыбалки', 'Вид мошенничества для кражи данных', 'Антивирусная программа'], correct: 1 },
+                { question: 'Как часто нужно менять пароли?', options: ['Никогда', 'Раз в год или при подозрении на утечку', 'Каждый день'], correct: 1 },
+                { question: 'Что такое менеджер паролей?', options: ['Программа для запоминания паролей', 'Блокнот с паролями', 'Антивирус'], correct: 0 },
+                { question: 'Безопасно ли использовать публичный Wi-Fi?', options: ['Да, всегда', 'Нет, лучше использовать VPN', 'Только для игр'], correct: 1 },
+                { question: 'Что такое VPN?', options: ['Вирус', 'Средство для шифрования и скрытия трафика', 'Программа для взлома'], correct: 1 },
+                { question: 'Как проверить, не украли ли ваш пароль?', options: ['Спросить у хакера', 'Проверить на сайтах вроде haveibeenpwned', 'Никак'], correct: 1 },
+                { question: 'Что делать, если вы перешли по фишинговой ссылке?', options: ['Ничего', 'Сменить пароли и проверить аккаунты', 'Отключить интернет'], correct: 1 },
+                { question: 'Можно ли хранить пароли в браузере?', options: ['Да, это удобно', 'Нет, это небезопасно', 'Можно, если пароль сложный'], correct: 1 },
+                { question: 'Что такое социальная инженерия?', options: ['Общение с друзьями', 'Метод взлома, основанный на доверии', 'Ремонт телефонов'], correct: 1 },
+                { question: 'Какой из этих паролей самый безопасный?', options: ['12345678', 'P@$$w0rd!', 'GfhrL9!sW2'], correct: 2 },
+                { question: 'Что делать с подозрительным письмом?', options: ['Ответить и спросить, кто отправитель', 'Удалить или отметить как спам', 'Переслать друзьям'], correct: 1 },
+                { question: 'Можно ли использовать одинаковые пароли для работы и личных аккаунтов?', options: ['Да, чтобы не забыть', 'Нет, это рискованно', 'Можно, если пароль очень сложный'], correct: 1 },
+                { question: 'Что такое вредоносное ПО?', options: ['Программы для безопасности', 'Программы, наносящие вред устройству', 'Офисные приложения'], correct: 1 },
+                { question: 'Как защититься от вирусов?', options: ['Не включать компьютер', 'Использовать антивирус и не открывать подозрительные файлы', 'Скачать больше вирусов'], correct: 1 },
+                { question: 'Что такое ботнет?', options: ['Сеть из заражённых устройств', 'Новый вид роботов', 'Антивирусная программа'], correct: 0 },
+                { question: 'Можно ли давать свой телефон незнакомцам?', options: ['Да, если просят позвонить', 'Лучше не давать, могут установить шпионское ПО', 'Можно, я за ними присмотрю'], correct: 1 },
+                { question: 'Что такое шифрование данных?', options: ['Сжатие файлов', 'Преобразование данных для защиты от доступа', 'Удаление данных'], correct: 1 },
+                { question: 'Какой способ входа самый безопасный?', options: ['Пароль', 'Пароль + двухфакторка', 'СМС-код'], correct: 1 },
+                { question: 'Что делать, если взломали аккаунт в соцсети?', options: ['Создать новый', 'Сменить пароль и проверить безопасность', 'Ничего'], correct: 1 },
+                { question: 'Можно ли нажимать на всплывающие окна "Ваш компьютер заражён"?', options: ['Да, это антивирус', 'Нет, это мошенничество', 'Только если окно красивое'], correct: 1 },
+                { question: 'Что такое резервное копирование?', options: ['Копия данных на случай потери', 'Удаление старых файлов', 'Загрузка файлов в облако'], correct: 0 }
+            ];
+            let game4Pool = shuffleArray([...detectiveMaster]);
+            let game4Index = 0;
+
+            function loadGame4() {
+                const d = game4Pool[game4Index % game4Pool.length];
+                game4Question.innerText = d.question;
+                game4Options.innerHTML = '';
+                d.options.forEach((opt, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'quiz-option';
+                    div.innerText = opt;
+                    div.dataset.optIndex = idx;
+                    div.addEventListener('click', (e) => {
+                        const selected = parseInt(e.currentTarget.dataset.optIndex);
+                        const isCorrect = (selected === d.correct);
+                        Array.from(game4Options.children).forEach((ch, i) => {
+                            if (i === d.correct) ch.classList.add('correct');
+                            else if (i === selected && !isCorrect) ch.classList.add('wrong');
+                        });
+                        game4Feedback.innerText = isCorrect ? '✅ Вы нашли угрозу!' : '❌ Опасность не распознана.';
+                        setTimeout(() => {
+                            game4Index++;
+                            if (game4Index >= game4Pool.length) {
+                                game4Pool = shuffleArray([...detectiveMaster]);
+                                game4Index = 0;
+                            }
+                            loadGame4();
+                            game4Feedback.innerText = '';
+                        }, 1200);
+                    });
+                    game4Options.appendChild(div);
+                });
+            }
+            game4Btn.addEventListener('click', () => {
+                game4Console.classList.remove('hidden');
+                game4Pool = shuffleArray([...detectiveMaster]);
+                game4Index = 0;
+                loadGame4();
+            });
+
+            // Оценка безопасности (опросник)
+            const checkboxes = [
+                document.getElementById('check1'),
+                document.getElementById('check2'),
+                document.getElementById('check3'),
+                document.getElementById('check4'),
+                document.getElementById('check5'),
+                document.getElementById('check6')
+            ];
+            const scoreCircle = document.getElementById('scoreCircle');
+            const scoreComment = document.getElementById('scoreComment');
+            const updateBtn = document.getElementById('updateScore');
+
+            function calculateScore() {
+                let total = 0;
+                checkboxes.forEach(cb => { if (cb.checked) total++; });
+                return Math.round((total / checkboxes.length) * 100);
+            }
+
+            function updateScoreDisplay() {
+                const percent = calculateScore();
+                const angle = (percent / 100) * 360;
+                scoreCircle.style.background = `conic-gradient(#2f8cff ${angle}deg, #1e3f60 ${angle}deg)`;
+                scoreCircle.innerText = percent + '%';
+
+                if (percent >= 80) scoreComment.innerText = '🛡️ Отлично! Вы очень хорошо защищены.';
+                else if (percent >= 50) scoreComment.innerText = '⚠️ Неплохо, но есть над чем поработать.';
+                else scoreComment.innerText = '🔓 Ваша безопасность под угрозой! Следуйте советам.';
+            }
+
+            updateBtn.addEventListener('click', updateScoreDisplay);
+            checkboxes.forEach(cb => cb.addEventListener('change', updateScoreDisplay));
+            updateScoreDisplay();
+        })();
+    </script>
+</body>
+</html>
